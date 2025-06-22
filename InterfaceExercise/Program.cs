@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace InterfaceExercise
 {
@@ -7,23 +8,49 @@ namespace InterfaceExercise
     {
         static void Main(string[] args)
         {
-            var car = new Car();
-            var truck = new Truck();
-            var suv = new SUV();
-            var vehicles = new List<IVehicle>(){car, truck, suv};
-            
-            foreach (var vehicle in vehicles)
+            var myCar = new Car
             {
-                vehicle.ChangeGears(true);
-                Console.WriteLine("                               ");
-                vehicle.Drive();
-                Console.WriteLine("                               ");
-                vehicle.Reverse();
-                Console.WriteLine("                               ");
-                vehicle.Park();
-                Console.WriteLine("                               ");
-                vehicle.Trunk(true);
+                Make = "Honda",
+                Model = "Civic",
+                NumberOfWheels = 4,
+                HasTrunk = true,
+                IsElectric = false,
+                IsDriveable = true,
+                NumberOfDoors = 4,
+                ManufacturerName = "Honda",
+                CompanyLocation = "Tokyo, Japan"
+            };
 
+            var myTruck = new Truck
+            {
+                Make = "Ford",
+                Model = "F-150",
+                NumberOfWheels = 4,
+                HasFlatBed = true,
+                WheelSize = 16.5,
+                IsDriveable = true,
+                ManufacturerName = "Ford",
+                CompanyLocation = "Detroit, USA"
+            };
+
+            var mySUV = new SUV
+            {
+                Make = "Toyota",
+                Model = "Highlander",
+                NumberOfWheels = 4,
+                HasFourWheelDrive = true,
+                NumberOfRows = 3,
+                IsDriveable = true,
+                ManufacturerName = "Toyota",
+                CompanyLocation = "Japan"
+            };
+
+            // Display organized output
+            myCar.DisplayDetails();
+            myTruck.DisplayDetails();
+            mySUV.DisplayDetails();
+        }
+    }
             }
             
             //TODO Be sure to follow BEST PRACTICES when creating classes and interfaces
@@ -64,6 +91,4 @@ namespace InterfaceExercise
             //In the scope of them method, use string interpolation to display property values.
             //In order to also interpolate values from ICompany, research how to extend interfaces.
             
-        }
-    }
-}
+        
